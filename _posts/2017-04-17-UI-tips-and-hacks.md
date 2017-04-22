@@ -3,13 +3,13 @@ layout: post
 title: 7 Useful tips and hacks for iOS UI.
 ---
 
-Building UI in mobile applications is one of the most time consuming tasks. Sometimes we struggling for hours with small things to make our customers and designers happy. Let's have a look on a set of tips to make your work on UI less painfull.    
+Building UI in mobile applications is one of the most time consuming part. Sometimes we struggling for hours with small things to make our customers and designers happy. Let's have a look on a set of tips to make work on UI less painfull.    
 
 ---
 
-## 1. Customize your navigation bar UI right.
+## 1. Customize your navigation bar UI right
 
-When navigation bar has different design on your screens it is quite common to see the following code in each `UIViewController` subclass:
+When navigation bar has different design on your screens we regurarly see the following code in each `UIViewController` subclass:
 
 ```swift
     override func viewWillAppear(_ animated: Bool) {
@@ -21,9 +21,9 @@ When navigation bar has different design on your screens it is quite common to s
 ```
 
 You should remember that [appearance](https://developer.apple.com/reference/uikit/uiappearance) acts as proxy for a class. So your settings will be applied to all navigation bars, including MFMailComposeViewController which can led to irritating errors.
-And needless to say that this code will be duplicated in a lot of your view controllers. 
+Needless to say that this code will be duplicated in a lot of your viewcontrollers. 
 
-Let's create some struct which will describe our navigation bar UI.
+Let's declare some struct which will describe our navigation bar UI.
 
 ```swift
 struct NavigationBarUI {
@@ -34,9 +34,9 @@ struct NavigationBarUI {
 
 Now it has only tintColor and barTintColor, but you can extend it for your personal use, adding something like localized navigation title, boolean flag isSeparatorVisible etc.
 
-And let's create some `BaseViewController` class which will have var for of `NavigationBarUI` type so you can override it in your controllers. 
+And let's create some `BaseViewController` class which will have a var of `NavigationBarUI` type so you can override it in your controllers. 
 
-Actually inheritance is the simplest, but not the best approach. When you use inheritance you establish the strongest relationship between objects. You will need to subclass your third party UIViewController from our `BaseViewController`.     
+Actually inheritance is the simplest, but not the best approach. Using inheritance you establish the strongest relationship between objects. You will need to subclass your third party viewcontroller from `BaseViewController`.     
 
 ```swift
 class BaseViewController: UIViewController {
@@ -64,7 +64,7 @@ class BaseViewController: UIViewController {
 }
 ```
 
-Now let's create an instance of `TestViewController` which will be a subclass of our BaseViewController.
+Now let's create `TestViewController` which will be a subclass of our `BaseViewController`.
 
 ```swift
 class TestViewController: BaseViewController {
@@ -79,13 +79,13 @@ class TestViewController: BaseViewController {
 We don't need to duplicate UI setup in each UIViewController.
 
 There is another question worth attention when deailing with navigation bar. 
-Question "why my status bar style doesn't work" is supposed to be the top most one.
+Question _why my status bar style doesn't work_ supposed to be the top most one.
 It is covered greatly in Andy Matuschak's article [Let's Play: Refactor the Mega Controller!](https://realm.io/news/andy-matuschak-refactor-mega-controller/)
 
-The main thing is that navigation controller doesn't normally ask its children for a preferred status bar style. It manages its own.
+The main thing is that navigation controller doesn't normally ask its children for a preferred status bar style. It manages its own one.
 So we need to provide status bar style for navigation controller. 
 
-Let's create BaseNavigationController class where we can update UINavigationController status bar style.
+Let's create `BaseNavigationController` class where we can update UINavigationController status bar style.
 
 ```swift
 class BaseNavigationViewController: UINavigationController {
@@ -112,7 +112,7 @@ var statusBarStyle: UIStatusBarStyle {
 }
 ```
 
-We will try to pass it to the instance of out base navigationController in our confifureUI() function. 
+We will try to pass it to the instance of our base navigationController in confifureUI() function. 
 
 ```swift
 if let nc = navigationController as? BaseNavigationViewController {
@@ -131,7 +131,7 @@ override var preferredStatusBarStyle: UIStatusBarStyle {
 }
 ```
 
-As a small tip let's extend our NavigationBarUI structure for flag indicating should navigationBar have black separator.
+As a small tip let's extend our `NavigationBarUI` structure for flag indicating should navigation bar have black separator.
 
 ```swift
 struct NavigationBarUI {
@@ -141,7 +141,7 @@ struct NavigationBarUI {
 }
 ```
 
-One of popular approaches is looping through all subviews of navigation bar and removing `UIImageView`.
+One of popular hacky approaches is looping through all subviews of navigation bar and removing the first found `UIImageView`.
 Something like this:
 
 ```swift
@@ -168,9 +168,9 @@ if !ui.isSeparatorVisible {
 
 ---
 
-## 2. Use intristic content size instead of hardcoded values.
+## 2. Use intristicContentSize over hardcoded values
 
-When we create custom UIBarItemButtons and want them to fit texts in different languages it is quite common to see smth like this:
+When we create custom UIBarItems and want them to fit texts in different languages it is quite common to see smth like this:
 
 ```swift
 fileprivate lazy var rightBarItem: UIBarButtonItem = {
@@ -231,15 +231,15 @@ fileprivate lazy var rightBarItem: UIBarButtonItem = {
  ```
 ---
 
-## 3. Override intristic content size for views in aggregated tables.
+## 3. Override intristicContentSize in your custom views
 
 When building complicated UI with a lot of ebmedded or aggregated elements we usually need to provide 
 height for each UITableViewCell. Luckily from iOS 8 we can use [self-sizing cells](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithSelf-SizingTableViewCells.html) so iOS will automatically calclate entire cell size based on its content and constraints.
 However in some cases we still need to provide cell height explicitly.
 For example when cell also contains UITableView (aggregated cells).
-Old-schoold way is to calculate height of all cells based on the tableViewDataSource.
+Old-schoold way is to calculate height of all cells based on the tableView dataSource.
 
-But we can do it simpler.    
+We can do it simpler:   
 
 ```swift
 class IntristicTableView: UITableView {
@@ -253,11 +253,11 @@ class IntristicTableView: UITableView {
 }
 ```
 
-Now we can simply replace UITableViewClass in cell's xib with our custom one. And We don't need to calculate tableView height anymore. We just call layoutIfNeeded() to force height calclulation. And contentSize of UITableView will be enoght to know embedded height.
+Now we can simply replace UITableViewClass in cell's xib with our custom one. And We don't need to calculate tableView height anymore. We just call [layoutIfNeeded](https://developer.apple.com/reference/uikit/uiview/1622507-layoutifneeded) to force height calclulation. And contentSize of UITableView will be enough to know embedded height.
 
 ---
 
-## 4. Generic instantiation of custom views.
+## 4. Generic instantiation of custom views
 
 Its is much better to instantiate custom views using their class names instead of hardcoded strings.
 Quite easy to mistype wrong letter and get exception. 
@@ -288,8 +288,8 @@ loadedView = views.first as? UIView
 
 is quite error-proned approach.
 
-Let's see what documentation tells us about [loadNibNamed:owner:options:](https://developer.apple.com/reference/foundation/nsbundle/1618147-loadnibnamed). It returns _an array containing the top-level objects in the nib file._ In xib file we have more than one object. For exapmle an instance of NSObject which will contain some dataSource logic.
-So the correct what is to filter this array and try to find our instance of UIView.
+Let's see what documentation tells us about [loadNibNamed:owner:options:](https://developer.apple.com/reference/foundation/nsbundle/1618147-loadnibnamed). It returns _an array containing the top-level objects in the nib file._ In xib file we have more than one object. For exapmle an instance of NSObject with some dataSource logic.
+So the correct what is to filter this array and search for our custom view:
 
 ```swift
 protocol ViewInitializing {}
@@ -318,7 +318,7 @@ extension UIView {
 
 ---
 
-## 5. Generic instantiation of cells.
+## 5. Generic instantiation of cells
 We already covered generic instantiation of views. We can do the same for UITableViewCells.
 Wouldn't it be great to have to instantiate your cells in generic way instead of using hardcoded strings for cell identifiers?
 
@@ -346,7 +346,7 @@ extension CellInitializing where Self: UITableViewCell {
 ```
 
 ---
-## 6. Use SnapKit for builing your layout in code.
+## 6. Use SnapKit for builing your layout in code
 
 Sometimes when we are working on custom views we need to setup our constrains programmatically.
 Instead of this 
@@ -357,11 +357,9 @@ myView.backgroundColor = UIColor.redColor()
 self.view.addSubview(myView)
 myView.translatesAutoresizingMaskIntoConstraints = false
 
-<p>
 view.addConstraint(NSLayoutConstraint(item: myView, attribute: .Top, 
                   relatedBy: .Equal, toItem: self.topLayoutGuide, 
                   attribute: .Bottom, multiplier: 1, constant: 0))
-<p>
 view.addConstraint(NSLayoutConstraint(item: myView, attribute: .Bottom, 
                   relatedBy: .Equal, toItem: self.bottomLayoutGuide, 
                   attribute:.Top, multiplier: 1, constant: 20))
@@ -377,7 +375,7 @@ it can be simplier with [SnapKit](https://github.com/SnapKit/SnapKit)
 
 ```swift
 view.snp.makeConstraints {[unowned self]  make in
-  make.top.equalTo(self.cardMainView.snp.top).inset(self.topOffset)
+  make.top.equalTo(self.anotherView.snp.top).inset(self.topOffset)
   make.centerX.equalTo(self.anotherView.snp.centerX)
   make.width.equalTo(self.viewWidth)
   make.height.equalTo(self.viewHeight)
@@ -389,6 +387,7 @@ view.snp.makeConstraints {[unowned self]  make in
 
 Forms supposed to be one of the most annoying party of UI. There are dozens of third party libraries 
 for builing forms but none of them became a silver-bullet in practice. 
+
 Before `UIStackView` we had only one way to build forms - using `UITableView`.
 The most difficult part is to handle all cases in UITableViewDataSource methods. And if you missed some case you will defenitely result in wrong behaviour.
 Things become even more complicated when we also have something like expand/collapse logic.
@@ -403,7 +402,7 @@ If you have a lot of content and it has similiar elements stackview might not be
 It doesn't provide reuse mechanism as `UITableView`. If you create 20 views in code your scrolling might have poor user experience. 
 
 ---
-## That's all for now. 
+## That's all for now
 
 The MIT License (MIT)
 
