@@ -288,7 +288,7 @@ loadedView = views.first as? UIView
 
 is quite error-proned approach.
 
-Let's see what documentation tells us about [loadNibNamed:owner:options:](https://developer.apple.com/reference/foundation/nsbundle/1618147-loadnibnamed). It returns _an array containing the top-level objects in the nib file._ In xib file we have more than one object. For exapmle an instance of NSObject with some dataSource logic.
+Let's see what documentation tells us about [loadNibNamed:owner:options:](https://developer.apple.com/reference/foundation/nsbundle/1618147-loadnibnamed). It returns _an array containing the top-level objects in the nib file._ In xib file we can have more than one object. For exapmle an instance of NSObject with some dataSource logic.
 So the correct what is to filter this array and search for our custom view:
 
 ```swift
