@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 7 Useful tips and hacks for iOS UI.
+title: 7 Useful tips and hacks for iOS UI
 ---
 
 Building UI in mobile applications is one of the most time consuming part. Sometimes we struggling for hours with small things to make our customers and designers happy. Let's have a look on a set of tips to make work on UI less painfull.    
@@ -403,6 +403,8 @@ It doesn't provide reuse mechanism as `UITableView`. If you create 20 views in c
 
 ---
 ## That's all for now
+
+You can also view simple [demo](https://github.com/EugeneGoloboyar/SimpleUIProject)
 
 The MIT License (MIT)
 
