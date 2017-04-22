@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Permalinks
 permalink:           pretty
 
@@ -31,3 +32,6 @@ github:
 gems:
   - jekyll-paginate
   - jekyll-gist
+=======
+theme: jekyll-theme-time-machine
+>>>>>>> a8af4c02efbd8a70bfbec619750d8e1708d14cf2
