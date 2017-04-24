@@ -3,7 +3,7 @@ layout: post
 title: 7 Useful tips and hacks for iOS UI
 ---
 
-Building UI in mobile applications is one of the most time consuming part. Sometimes we struggling for hours with small things to make our customers and designers happy. Let's have a look on a set of tips to make work on UI less painfull.    
+Building UI in mobile applications is one of the most time consuming part. Sometimes we struggle for hours with small things to make our customers and designers happy. Let's have a look on a set of tips to make work on UI less painfull.    
 
 ---
 
@@ -78,7 +78,7 @@ class TestViewController: BaseViewController {
 
 We don't need to duplicate UI setup in each UIViewController.
 
-There is another question worth attention when deailing with navigation bar. 
+There is another question worth attention while working with navigation bar. 
 Question _why my status bar style doesn't work_ supposed to be the top most one.
 It is covered greatly in Andy Matuschak's article [Let's Play: Refactor the Mega Controller!](https://realm.io/news/andy-matuschak-refactor-mega-controller/)
 
@@ -170,7 +170,7 @@ if !ui.isSeparatorVisible {
 
 ## 2. Use intristicContentSize over hardcoded values
 
-When we create custom UIBarItems and want them to fit texts in different languages it is quite common to see smth like this:
+When we create custom UIBarButtonItems and want them to fit texts in different languages it is quite common to see smth like this:
 
 ```swift
 fileprivate lazy var rightBarItem: UIBarButtonItem = {
@@ -218,7 +218,7 @@ class NavigationBarButton: UIButton {
 ```
 
 Now we can use our custom button which will resize with its content. 
-Nomore magic numbers or manual calculations.    
+No more magic numbers or manual calculations.    
 
 ```swift
 fileprivate lazy var rightBarItem: UIBarButtonItem = {
@@ -237,7 +237,7 @@ When building complicated UI with a lot of ebmedded or aggregated elements we us
 height for each UITableViewCell. Luckily from iOS 8 we can use [self-sizing cells](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithSelf-SizingTableViewCells.html) so iOS will automatically calclate entire cell size based on its content and constraints.
 However in some cases we still need to provide cell height explicitly.
 For example when cell also contains UITableView (aggregated cells).
-Old-schoold way is to calculate height of all cells based on the tableView dataSource.
+Old-school way is to calculate height of all cells based on the tableView dataSource.
 
 We can do it simpler:   
 
@@ -253,7 +253,7 @@ class IntristicTableView: UITableView {
 }
 ```
 
-Now we can simply replace UITableViewClass in cell's xib with our custom one. And We don't need to calculate tableView height anymore. We just call [layoutIfNeeded](https://developer.apple.com/reference/uikit/uiview/1622507-layoutifneeded) to force height calclulation. And contentSize of UITableView will be enough to know embedded height.
+Now we can simply replace UITableViewClass in cell's xib with our custom one. And we don't need to calculate tableView height anymore. We just call [layoutIfNeeded](https://developer.apple.com/reference/uikit/uiview/1622507-layoutifneeded) to force height calclulation. And contentSize of UITableView will be enough to know embedded height.
 
 ---
 
@@ -261,7 +261,7 @@ Now we can simply replace UITableViewClass in cell's xib with our custom one. An
 
 Its is much better to instantiate custom views using their class names instead of hardcoded strings.
 Quite easy to mistype wrong letter and get exception. 
-Usually best practise is to keep name of your view's xib file the same as your custom view class.
+Usually best practice is to keep name of your view's xib file the same as your custom view class.
 
 And we can write smth like this:
 
@@ -348,7 +348,7 @@ extension CellInitializing where Self: UITableViewCell {
 ---
 ## 6. Use SnapKit for builing your layout in code
 
-Sometimes when we are working on custom views we need to setup our constrains programmatically.
+Sometimes when we are working on custom views we need to setup our constraints programmatically.
 Instead of this 
 
 ```swift 
@@ -389,7 +389,7 @@ Forms supposed to be one of the most annoying party of UI. There are dozens of t
 for builing forms but none of them became a silver-bullet in practice. 
 
 Before `UIStackView` we had only one way to build forms - using `UITableView`.
-The most difficult part is to handle all cases in UITableViewDataSource methods. And if you missed some case you will defenitely result in wrong behaviour.
+The most difficult part is to handle all cases in UITableViewDataSource methods. And if you missed some case you would defenitely result in wrong behaviour.
 Things become even more complicated when we also have something like expand/collapse logic.
 
 Luckily `UIStackView` provides amazing ability to create forms. You just need place and arrange 
