@@ -60,7 +60,7 @@ Sometimes it is much easier to prepare localized version of image than strugglin
 
 ## 6. Prefer intristic content size over hardcoded values
 
-When you need to localize such UI elements as UIBarButtonItem instead of magic numbers or manual text size calculation rely on UIView intristic content size property. You can read more about it in my previous [post](https://eugenegoloboyar.github.io/2017/04/17/UI-tips-and-hacks.html)
+When you need to localize such UI elements as UIBarButtonItem instead of magic numbers or manual text size calculation rely on UIView intristic content size property. You can read more about it in my previous [post](https://eugenegoloboyar.github.io/2017/04/17/UI-tips-and-hacks)
 
 
 ## 7. Create shared Google table for localization
