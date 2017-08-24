@@ -69,7 +69,7 @@ Working on different big project with localization I found out that copy-pasting
 So firstly you can create shared Google doc table with all translations. 
 To do this in automatic way there is a pretty tool [Babelish](https://github.com/netbe/Babelish) which can convert iOS localizable strings to *.csv.
 
-After installing Babelish tool cd /your_localizable_string_file_location and run this command:
+After installing Babelish tool *cd /your_localizable_string_file_location* and run this command:
 
 ```
 strings2csv --filenames=Localizable.strings
