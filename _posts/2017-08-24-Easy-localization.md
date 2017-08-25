@@ -10,7 +10,7 @@ Today I'd like to cover such topic as app localization. Actually it is simple ta
 ## 1. Localization is essential from start
 It doesn't matter your app has only one language now. Mobile app development assumes rapid and arbitrary changes thus requirement for new language might appear in any moment. 
 
-It would be much better to just give customer a list with translations 
+It would be more effectively to just give customer a list with translations 
 than to stop all current tasks replacing hard coded texts all over the app.
 
 That's why localization is must from start. 
