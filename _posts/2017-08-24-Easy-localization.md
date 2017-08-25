@@ -63,10 +63,10 @@ Sometimes it is much easier to prepare localized version of image than strugglin
 When you need to localize such UI elements as UIBarButtonItem instead of magic numbers or manual text size calculation rely on UIView intristic content size property. You can read more about it in my previous [post](https://eugenegoloboyar.github.io/2017/04/17/UI-tips-and-hacks)
 
 
-## 7. Create shared Google table for localization
+## 7. Create shared Google sheet for localization
 Working on different big projects with localization I found out that copy-pasting localization changes is time consuming. Even more irritating is to check old/new version and fix such annoying bugs as broken characters encoding. 
 
-So firstly you can create shared Google doc table with all translations. 
+So firstly you can create shared Google sheet with all translations. 
 To do this in automatic way there is a pretty tool [Babelish](https://github.com/netbe/Babelish) which can convert iOS localizable strings to *.csv.
 
 After installing Babelish tool *cd /your_localizable_string_file_location* and run this command:
@@ -78,9 +78,9 @@ Creating translations.csv
 Done
 ```
 
-Than you can import your translations.csv in google doc. 
+Than you can import your translations.csv in google sheet. 
 
-Now we have all translations in one place. If customer wants to apply changes he can just mark proper cells in Google doc. 
+Now we have all translations in one place. If customer wants to apply changes or make corrections he can just mark proper cells in Google sheet. 
 It is better to have one sheet with all translations and separate sheets for each language for easy export.
 
 ![ScreenShot](http://s009.radikal.ru/i308/1708/51/546bd40532dd.png)
@@ -89,7 +89,7 @@ It is better to have one sheet with all translations and separate sheets for eac
 This makes changes on our side much easier.
 In case we have a lot of changes or even new language - no problem. We can export all new translations to csv file for proper language and convert it to iOS localized strings with already mentioned Babelish tool.
 
-Your google doc sheet should have the following struct for converting it to .strings, pay attention to the name of columns : *Variables*, *English*
+Your table should have the following struct for converting it to .strings, pay attention to the name of columns : *Variables*, *English*
 
 ![ScreenShot](http://s013.radikal.ru/i325/1708/a7/0b9a3c2ba1a6.png) 
  
