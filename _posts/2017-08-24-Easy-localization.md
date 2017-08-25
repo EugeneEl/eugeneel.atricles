@@ -64,7 +64,7 @@ When you need to localize such UI elements as UIBarButtonItem instead of magic n
 
 
 ## 7. Create shared Google table for localization
-Working on different big project with localization I found out that copy-pasting localization changes is time consuming. Even more irritating is to check old/new version and fix such annoying bugs as broken characters encoding. 
+Working on different big projects with localization I found out that copy-pasting localization changes is time consuming. Even more irritating is to check old/new version and fix such annoying bugs as broken characters encoding. 
 
 So firstly you can create shared Google doc table with all translations. 
 To do this in automatic way there is a pretty tool [Babelish](https://github.com/netbe/Babelish) which can convert iOS localizable strings to *.csv.
