@@ -55,7 +55,7 @@ Don't forget to add "Localized resources can be mixed" = YES in your info.plist 
 
 ## 5. Localize images instead of complicated layout
 
-Sometimes it is much easier to prepare localized version of image than struggling with different layout for multiple languages.
+Sometimes it is much more handy to prepare localized version of image than struggling with different layout for multiple languages.
 
 
 ## 6. Prefer intristic content size over hardcoded values
