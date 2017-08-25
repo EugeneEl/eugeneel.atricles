@@ -15,7 +15,7 @@ than to stop all current tasks replacing hard coded texts all over the app.
 
 That's why localization is must from start. 
 If code has hard coded string instead of localization - pull/merge request must be rejected.
-Even when you leave your project - people supporting it will mention you in good way.
+Even if you leave your project before localizaion stage - people supporting it will mention you in good way.
 
 ## 2. Keep all localizations in code
 
