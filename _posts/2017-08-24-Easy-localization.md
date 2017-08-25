@@ -3,7 +3,7 @@ layout: post
 title: Easy localization in iOS
 ---
 
-Today I'd like to cover such topic as app localization. Actually it is simple task however I intend sharing some useful approaches which make localization even more easier and pleasant.   
+Today I'd like to cover such topic as app localization. Actually it is simple task however I intend sharing some useful approaches which significantly enhace localization process.   
 
 ---
 
